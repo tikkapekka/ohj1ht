@@ -1,51 +1,48 @@
 # Harjoitustyön suunnitelma
 
-(Täydennä oman pelisi tiedot tähän tiedostoon muokkaamalla 
-tiedostoa tekstieditorissa. Käytä [Markdown-syntaksia](https://about.gitlab.com/handbook/markdown-guide/).
-Poista sitten *kaikki* suluilla merkityt kohdat.)
 
 ## Tietoja 
 
-Tekijä: (Etunimi Sukunimi)
+Tekijä: Pekka Tikkanen
 
-Työ git-varaston osoite: <https://gitlab.jyu.fi/anlakane/ohj1ht> (*Korvaa* tämä osoite oman git-varastosi osoitteella)
+Työ git-varaston osoite: <https://github.com/tikkapekka/ohj1ht.git>
 
-Pelin nimi: (Nimi)
+Ohjelman nimi: Tuntiraportti
 
-Pelialusta: Windows/macOS/Linux (Valitse alusta)
+Alusta: Windows/macOS/Linux
 
-Pelaajien lukumäärä: 1/2/3/4 (Valitse pelaajien lukumäärä)
 
-## Pelin tarina
+## Ohjelman idea
 
-(Pelin tarina.)
-
-## Pelin idea ja tavoitteet
-
-(Pelin idea ja tavoitteet.)
-
-## Hahmotelma pelistä
-
-(Kun olet lisännyt suunnitelmakuvan tähän hakemistoon, linkitä se tähän alle. Alla on esimerkkikuvan linkitys.)
-
-![Esimerkkikuva](esimerkkikuva.png "Esimerkkikuva")
+Komentorivisovellus tulostaa kahdesta tekstitiedostosta tuntiraportin.
+Samasta tuntilistauksesta voidaan tehdä useita eri raportteja valitsemalla
+eri projektitiedosto. Ohjelma antaa virheilmoituksen, jos tekstitiedostot 
+eivät täytä vaatimuksia.
 
 ## Toteutuksen suunnitelma
 
-Helmikuu
+vk 26
 
-- (Tavoite 1)
-- (Tavoite 2)
-- (Tavoite 3)
+- projektin luonti
+- tuumailua
 
-Maaliskuu
+vk 27–28
 
-- (Tavoite 1)
-- (Tavoite 2)
-- (Tavoite 3)
+- rakenteen suunnittelu paperilla
+- tiedostojen lukeminen 
+- aliohjelmakutsut
+- aliohjelmien toteutusta
+- testaamista
+
+vk 29–30
+
+- aliohjelmien toteutus jatkuu
+- testaaminen jatkuu
+- virheilmoitukset
+- kaikki nätiksi
+
 
 Jos aikaa jää
 
-- (Tavoite 1)
-- (Tavoite 2)
-- (Tavoite 3)
+- raportti ulos virheellisestä datasta huolimatta
+- laajentamismahdollisuuksien pohdinta
