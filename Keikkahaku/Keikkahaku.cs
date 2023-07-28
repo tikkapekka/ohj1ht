@@ -18,7 +18,13 @@ using System.Net.Http;
 /// artistin, esiintymispaikan ja paikkakunnan taulukkona.
 /// </summary>
 public class Keikkahaku
-{
+{    
+    /// <summary>
+    /// Haetaan ja tulostetaan keikat käyttäjän
+    /// antamalta päivämäärältä, kunnes käyttäjä syöttää
+    /// tyhjän merkkijonon. Tulosterivi esim.
+    /// "Lauantai 19.08.2023 Kaija Koo Olympiastadion Helsinki"
+    /// </summary>
     public static void Main()
     {
         try
@@ -39,7 +45,7 @@ public class Keikkahaku
         }
         catch (HttpRequestException)
         {
-            Console.WriteLine("Ei löytynyt keikkoja.");
+            Console.WriteLine("Jokin meni pieleen.");
         }
     }
 
@@ -86,7 +92,7 @@ public class Keikkahaku
                                      "        \"name",
                                      "            \"name",
                                      "                \"addressLoc" };
-        List<List<string>> listat = new List<List<string>>();
+        var listat = new List<List<string>>();
         for (int i = 0; i < haut.Length; i++) listat.Add(new List<string>());
         int lkm = 0;
         for (int i = 0; i < rivit.Length; i++)
@@ -151,6 +157,7 @@ public class Keikkahaku
     }
 
 
+     // TODO: Sarakkeiden leveydet parametrina pisimmän merkkijonon mukaan.
     /// <summary>
     /// Taulukoi haetun päivämäärän keikat ja järjestää ne aakkosjärjestykseen.
     /// </summary>
@@ -198,19 +205,28 @@ public class Keikkahaku
         jono = sb.ToString(alku, loppu - alku);
         //Ääkköset saadaan korjattua tällä.
         jono = Regex.Unescape(jono);
-        //Korvataan pari hankalampaa erikoismerkkiä käsin.                     
-        jono = Regex.Replace(jono, "\\&#8217\\S{1,}", "&");  
+        //Korjataan pari hankalampaa erikoismerkkiä käsin.                     
+        jono = Regex.Replace(jono, "\\&#8217;", "'");
+        jono = Regex.Replace(jono, "\\&#038;", "&");
         jono = Regex.Replace(jono, "\\&#8211\\S{1,}", "—");
-        jono = Regex.Replace(jono, "\\&#038\\S{1,}", "&");
         return jono;
     }
 
 
+     // TODO: kääntäjä nurisee tästä, korvaa uuden-
+     // aikaisemmalla tavalla kunhan opit
+    /// <summary>
+    /// Lähettää osoitteen palvelimelle pyynnön ja palauttaa
+    /// sivun tiedot merkkijonona. Heittää poikkeuksen, jos
+    /// pyyntöä ei voida täyttää.
+    /// </summary>
+    /// <param name="url"> Sivun url-osoite. </param>
+    /// <returns> Sivun HTML-koodi. </returns>
     public static string LueNetista(string url)
     {
-        var client = new HttpClient();
-        string content = client.GetStringAsync(url).GetAwaiter().GetResult();
-        return content;
+        HttpClient client = new();
+        string sivu = client.GetStringAsync(url).GetAwaiter().GetResult();
+        return sivu;
     }
 
 
